@@ -1,0 +1,25 @@
+<h1>Create your listings here!</h1>
+<%= form_for @listing do |f| %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :kitchen %></div>
+    
+    <!-- radio button for kitchen true false -->
+    <div>true</div>
+    <div><%= f.radio_button :kitchen, true %></div>
+    <div>false</div>
+    <div><%= f.radio_button :kitchen, false %></div>
+    
+    <!-- check_box for amenities options arrays yes no -->
+    <div><%= f.label :amenities %></div>
+    <div>Gym</div>
+    <div><%= f.check_box :amenities, {multiple: true}, "gym", nil %></div>
+    <div>Pool</div>
+    <div><%= f.check_box :amenities, {multiple: true}, "pool", nil %></div>
+    <div>Sauna</div>
+    <div><%= f.check_box :amenities, {multiple: true}, "sauna", nil %></div>
+    <div>Toilets</div>
+    <div><%= f.check_box :amenities, {multiple: true}, "toilets", nil %></div>
+    <div><%= f.submit "Create Listing" %></div>
+
+<% end %>
