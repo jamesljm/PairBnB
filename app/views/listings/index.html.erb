@@ -1,6 +1,9 @@
 <h1>List of listings</h1>
 
 <% @listing.each do |l|%>
-<%= l.title %>
-<%= l.kitchen %>
+<div><%= "#{l.title}" %></div>
+<div><%= "kitchen: #{l.kitchen}" %></div>
+<div><%= "amenities: #{l.amenities}"%></div>
+<div><%= l.user.email %>
+<div></br></div>
 <% end %>
