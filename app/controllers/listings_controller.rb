@@ -1,8 +1,7 @@
 class ListingsController < ApplicationController
     # can add all sorts of before_action?
     def index                
-        @listing = Listing.all
-
+        @listing = Listing.all.order(:title).page params[:page]
     end
 
     def new

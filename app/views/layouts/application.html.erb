@@ -11,14 +11,20 @@
   </head>
 
   <body>
-    
-    <div id="header">
-      <% if signed_in? -%>
-        <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-      <% else -%>
-        <%= link_to t(".sign_in"), sign_in_path %>
-      <% end -%>
-    </div>
+    <nav class="navbar navbar-default"> 
+
+      <%= link_to "New Listing", new_listing_path %>
+      <%= link_to "See Listings", listings_path%>
+
+      <div id="header">
+        <% if signed_in? -%>
+          <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+        <% else -%>
+          <%= link_to t(".sign_in"), sign_in_path %>
+        <% end -%>
+      </div>
+ 
+    </nav>
 
     <div id="flash">
       <% flash.each do |key, value| -%>

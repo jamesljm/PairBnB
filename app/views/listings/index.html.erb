@@ -1,9 +1,39 @@
 <h1>List of listings</h1>
 
-<% @listing.each do |l|%>
-<div><%= "#{l.title}" %></div>
-<div><%= "kitchen: #{l.kitchen}" %></div>
-<div><%= "amenities: #{l.amenities}"%></div>
-<div><%= l.user.email %>
-<div></br></div>
-<% end %>
+<div class="container-fluid">
+
+    <%= paginate @listing %>
+
+        <% @listing.in_groups_of(3) do |l1,l2,l3|%>
+            <div class="row">
+                <div class="col-md-4">
+                    <div><%= "#{l1.title}" %></div>
+                    <div><%= "kitchen: #{l1.kitchen}" %></div>
+                    <div><%= "amenities: #{l1.amenities}"%></div>
+                    <div><%= l1.user.email %></div>
+                    <div></br></div>
+                </div>
+
+                <% if l2 %>                
+                    <div class="col-md-4">
+                        <div><%= "#{l2.title}" %></div>
+                        <div><%= "kitchen: #{l2.kitchen}" %></div>
+                        <div><%= "amenities: #{l2.amenities}"%></div>
+                        <div><%= l2.user.email %></div>
+                        <div></br></div>
+                    </div>
+                <% end %>
+
+                <% if l3 %>
+                    <div class="col-md-4">
+                        <div><%= "#{l3.title}" %></div>
+                        <div><%= "kitchen: #{l3.kitchen}" %></div>
+                        <div><%= "amenities: #{l3.amenities}"%></div>
+                        <div><%= l3.user.email %></div>
+                        <div></br></div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+
+</div>
