@@ -68,3 +68,7 @@ gem 'jquery-rails'
 gem 'faker'
 
 gem 'kaminari'
+
+gem 'carrierwave', '~> 1.0'
+
+gem "mini_magick"

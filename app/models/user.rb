@@ -1,11 +1,15 @@
 require 'securerandom'
+
 class User < ApplicationRecord
   include Clearance::User
 
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
 
-  
+  mount_uploader :avatar, AvatarUploader
+
+  enum status: [:super_admin, :moderator, :customer]
+
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
       name: ["name"],
@@ -21,5 +25,7 @@ class User < ApplicationRecord
     x = self.authentications.find_by(provider: 'facebook')
     return x.token unless x.nil?
   end
+
+
 end
 

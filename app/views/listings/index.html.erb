@@ -11,6 +11,15 @@
                     <div><%= "kitchen: #{l1.kitchen}" %></div>
                     <div><%= "amenities: #{l1.amenities}"%></div>
                     <div><%= l1.user.email %></div>
+                    <% if current_user.id==l1.user_id %>
+                        <div><%= link_to "edit listing", edit_listing_path(l1) %></div>
+                    <% end %>
+
+                    <% if current_user.customer? %>
+                    <% elsif %>
+                        <div><%= button_to "delete listing", listing_path(l1), method: :delete %></div>
+                    <% end %>
+
                     <div></br></div>
                 </div>
 
@@ -20,6 +29,15 @@
                         <div><%= "kitchen: #{l2.kitchen}" %></div>
                         <div><%= "amenities: #{l2.amenities}"%></div>
                         <div><%= l2.user.email %></div>
+                        <% if current_user.id==l2.user_id %>
+                            <div><%= link_to "edit listing", edit_listing_path(l2) %></div>
+                        <% end %>
+
+                        <% if current_user.customer? %>
+                        <% elsif %>
+                            <div><%= button_to "delete listing", listing_path(l2), method: :delete %></div>
+                        <% end %>
+
                         <div></br></div>
                     </div>
                 <% end %>
@@ -30,6 +48,15 @@
                         <div><%= "kitchen: #{l3.kitchen}" %></div>
                         <div><%= "amenities: #{l3.amenities}"%></div>
                         <div><%= l3.user.email %></div>
+                        <% if current_user.id==l3.user_id %>
+                            <div><%= link_to "edit listing", edit_listing_path(l3) %></div>
+                        <% end %>
+
+                        <% if current_user.customer? %>
+                        <% elsif %>
+                            <div><%= button_to "delete listing", listing_path(l3), method: :delete %></div>
+                        <% end %>
+
                         <div></br></div>
                     </div>
                 <% end %>
