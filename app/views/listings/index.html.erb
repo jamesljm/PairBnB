@@ -10,6 +10,11 @@
                     <div><%= "#{l1.title}" %></div>
                     <div><%= "kitchen: #{l1.kitchen}" %></div>
                     <div><%= "amenities: #{l1.amenities}"%></div>
+                    <div>
+                        <% l1.photos.each do |p| %>
+                        <%= image_tag(p.thumb.url) %>
+                        <% end %>
+                    </div>
                     <div><%= l1.user.email %></div>
                     <% if current_user.id==l1.user_id %>
                         <div><%= link_to "edit listing", edit_listing_path(l1) %></div>
@@ -28,6 +33,11 @@
                         <div><%= "#{l2.title}" %></div>
                         <div><%= "kitchen: #{l2.kitchen}" %></div>
                         <div><%= "amenities: #{l2.amenities}"%></div>
+                        <div>
+                            <% l2.photos.each do |p| %>
+                            <%= image_tag(p.thumb.url) %>
+                            <% end %>
+                        </div>
                         <div><%= l2.user.email %></div>
                         <% if current_user.id==l2.user_id %>
                             <div><%= link_to "edit listing", edit_listing_path(l2) %></div>
@@ -47,6 +57,11 @@
                         <div><%= "#{l3.title}" %></div>
                         <div><%= "kitchen: #{l3.kitchen}" %></div>
                         <div><%= "amenities: #{l3.amenities}"%></div>
+                        <div>
+                            <% l3.photos.each do |p| %>
+                            <%= image_tag(p.thumb.url) %>
+                            <% end %>
+                        </div>
                         <div><%= l3.user.email %></div>
                         <% if current_user.id==l3.user_id %>
                             <div><%= link_to "edit listing", edit_listing_path(l3) %></div>

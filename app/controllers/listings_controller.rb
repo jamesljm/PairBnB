@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
 
     def index                
         @listing = Listing.all.order(:title).page params[:page]
+        # @photo = photos.all
     end
 
     def new
@@ -41,7 +42,7 @@ class ListingsController < ApplicationController
     private
 
     def listing_params
-        params.require(:listing).permit(:title, :user_id, :kitchen, {amenities: []})
+        params.require(:listing).permit(:title, :user_id, :kitchen, {amenities: []}, {photos: []})
         # remember amenities will be saved in an array.
     end
 

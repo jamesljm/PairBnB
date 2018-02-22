@@ -15,8 +15,7 @@ class Clearance::UsersController < Clearance::BaseController
   end
 
   def create
-    @user = user_from_params
-
+    @user = User.new(new_user_params)
     if @user.save
       sign_in @user
       redirect_back_or url_after_create
@@ -49,15 +48,23 @@ class Clearance::UsersController < Clearance::BaseController
     Clearance.configuration.redirect_url
   end
 
+  def new_user_params
+    params.require(:user).permit(:name, :email, :password, :avatar, :remote_avatar_url)
+  end
+
   def user_from_params
     email = user_params.delete(:email)
     password = user_params.delete(:password)
+    # rmb to add this after adding any new columns
     name = user_params.delete(:name)
+    avatar = user_params.delete(:remote_avatar_url)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.email = email
       user.password = password
+      # rmb to add this after adding any new columns
       user.name = name
+      user.avatar = avatar
     end
   end
 
