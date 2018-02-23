@@ -12,3 +12,10 @@
   <%= form.label :name %>
   <%= form.text_field :name %>
 </div>
+
+<div class="file-field">
+  <%= form.label "Upload profile picture" %>
+  <%= form.file_field :avatar %><br/>
+  <%= form.label :remote_avatar_url, "or image URL" %><br/>
+  <%= form.text_field :remote_avatar_url %>
+</div>

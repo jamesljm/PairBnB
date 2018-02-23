@@ -1,0 +1,5 @@
+<h1>Your reservation is confirmed.</h1>
+
+<h2><%= "Your booking for #{@reservation.calc_date_diff} nights at #{@listing.title}:" %></h2>
+<%= "Booking dates: #{@reservation.start_date} - #{@reservation.end_date}" %></br>
+<%= "Price: RM#{@reservation.calc_total_price} "%>
