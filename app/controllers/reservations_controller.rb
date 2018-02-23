@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     def create 
         @reservation = current_user.reservations.new(reservation_params)
         @reservation.listing_id = params[:listing_id]
-        if @reservation.save
+        if @reservation.save            
             render template: "reservations/confirmation"
         else
             redirect_back(fallback_location: new_listing_reservation_path)

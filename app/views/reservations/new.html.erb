@@ -3,12 +3,12 @@
 <%= form_for [@listing, @reservation] do |f| %>
     <div class="form-group">
         <div><%= f.label :start_date, class: 'col-sm-2 control-label' %></div>
-        <div><%= f.date_field :start_date, autofocus: true, class: "col-sm-2 form-control" %></div>
+        <div><%= f.date_field :start_date, autofocus: true, class: "col-sm-2 form-control haha" %></div>
     </div>
 
     <div class="form-group">
         <div><%= f.label :end_date, class: 'col-sm-2 control-label' %></div>
-        <div><%= f.date_field :end_date, autofocus: true, class: "col-sm-2 form-control" %></div>
+        <div><%= f.date_field :end_date, autofocus: true, class: "col-sm-2 form-control haha" %></div>
     </div>
 
     <div class="form-group">
@@ -19,3 +19,21 @@
     <div><%= f.submit "Submit Reservation" %></div>
 
 <% end %>
+
+<!-- <% @listing.reservations.each do |r| %>
+<%= r.start_date %>
+<%= r.end_date %>
+<% end  %> -->
+
+
+<script>
+    // flatpickr(".haha", {});
+    flatpickr(".haha", {
+    onChange: [function(selectedDates){
+        const dateArr = selectedDates.map(date => this.formatDate(date, "Y-m-d"));
+        console.log(dateArr);
+    }]
+});
+
+
+</script>
