@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+    # before_action :sign_in
     # can add all sorts of before_action?
     before_action :require_login, only: [:create, :edit, :update, :destroy]
     before_action :set_listing, only: [:edit, :update, :destroy]
@@ -7,6 +8,11 @@ class ListingsController < ApplicationController
         @listing = Listing.all.order(:title).page params[:page]
         # @photo = photos.all
     end
+
+    def search 
+        @listing = Listing.search(params[:search]).page params[:page]
+        render template:"listings/search"
+    end 
 
     def new
         @listing = Listing.new
@@ -31,7 +37,7 @@ class ListingsController < ApplicationController
 
     def destroy
         if current_user.customer?
-            flash[:notice] = "Sorry. You are not allowed to perform this action."
+            # flash[:notice] = "Sorry. You are not allowed to perform this action."
             redirect_to listings_path, notice: "Sorry. You do not have the permission to verify a property."
         elsif
             @listing = @listing.destroy
@@ -48,5 +54,11 @@ class ListingsController < ApplicationController
 
     def set_listing
         @listing = Listing.find(params[:id])
+    end
+
+    def sign_in
+        unless current_user
+            redirect_to sign_in_path
+        end
     end
 end

@@ -6,10 +6,17 @@ Rails.application.routes.draw do
     resource :password, controller: "clearance/passwords", only: [:create, :edit, :update]
   end
 
-  resources :listings, controller: "listings"
+
+  get "/search" => "listings#search" 
+  
+  resources :listings do
+    resources :reservations
+  end
+
+
   # routes not nested more than 2
   # resources with s - gives :id
-
+  
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
