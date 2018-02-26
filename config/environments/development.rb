@@ -27,13 +27,29 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
   #add this line to set mailer delivery method to :letter_opener
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  #Action Mailer Configuration for Gmail
+  require 'mail'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'localhost:3000',
+  user_name:            'leejiemin.next@gmail.com',
+  password:             ENV['GMAIL_PASSWORD'],
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
+  #Generating URLs in Action Mailer Views. DON'T NEED THIS FOR :LETTER_OPENER 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
