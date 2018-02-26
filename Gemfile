@@ -78,3 +78,7 @@ gem 'fog-aws'
 gem 'flatpickr_rails'
 
 gem 'braintree'
+
+gem "letter_opener", :group => :development
+
+gem 'mail'

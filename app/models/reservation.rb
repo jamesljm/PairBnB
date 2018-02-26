@@ -15,7 +15,7 @@ class Reservation < ApplicationRecord
     validate :start_date_after_today
 
     def overlap_dates 
-        if self.listing.reservations.where("(? >= start_date AND ? <= end_date) OR (? >= start_date AND ? <= end_date)", self.start_date, self.start_date, self.end_date, self.end_date).count != 0
+        if self.listing.reservations.where("(? >= start_date AND ? < end_date) OR (? > start_date AND ? <= end_date)", self.start_date, self.start_date, self.end_date, self.end_date).count != 0
         errors.add(:start_date, " overlaps")
         end
     end
@@ -39,7 +39,7 @@ class Reservation < ApplicationRecord
 
     def end_date_is_after_start_date
         return if end_date.blank? || start_date.blank?
-        if end_date < start_date
+        if end_date <= start_date
             errors.add(:end_date, "cannot be before the start date") 
         end 
     end
