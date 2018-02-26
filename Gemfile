@@ -76,3 +76,5 @@ gem "mini_magick"
 gem 'fog-aws'
 
 gem 'flatpickr_rails'
+
+gem 'braintree'
