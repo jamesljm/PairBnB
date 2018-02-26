@@ -15,7 +15,7 @@
 
   <body>
     <nav class="navbar navbar-default"> 
-
+      PAIRBNB
       <%= link_to "New Listing", new_listing_path %>
       <%= link_to "See Listings", listings_path%>
 
@@ -30,12 +30,17 @@
  
     </nav>
 
-    <div id="flash">
+    <!-- <div id="flash">
       <% flash.each do |key, value| -%>
         <div id="flash_<%= key %>"><%=h value %></div>
       <% end %>
-    </div>
-
+    </div> -->
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+          <%= value %>
+      </div>
+    <% end %>
+    
     <%= yield %>
 
   </body>

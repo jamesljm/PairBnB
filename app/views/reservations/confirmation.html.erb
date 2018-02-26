@@ -3,3 +3,5 @@
 <h2><%= "Your booking for #{@reservation.calc_date_diff} nights at #{@listing.title}:" %></h2>
 <%= "Booking dates: #{@reservation.start_date} - #{@reservation.end_date}" %></br>
 <%= "Price: RM#{@reservation.calc_total_price} "%>
+
+<%= link_to "Make Payment", braintree_new_path(id: @reservation.id)%>
