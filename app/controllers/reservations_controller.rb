@@ -13,7 +13,11 @@ class ReservationsController < ApplicationController
         @reservation.listing_id = params[:listing_id]
         if @reservation.save            
             @customer = current_user
-            ReservationMailer.booking_email(@customer, @reservation.listing.user, @reservation).deliver_now            
+            @current_listing = @reservation.listing
+            @listing_user = @current_listing.user
+            
+            ReservationJob.perform_later(@customer, @listing_user, @reservation)
+            # ReservationMailer.booking_email(@customer, @reservation.listing.user, @reservation).deliver_now            
             render template: "reservations/confirmation"
         else
             redirect_back(fallback_location: new_listing_reservation_path)
