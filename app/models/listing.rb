@@ -1,7 +1,9 @@
 class Listing < ApplicationRecord
+    include Elasticsearch::Model
     belongs_to :user
     has_many :reservations, dependent: :destroy
     validates :title, presence: true
+
 
     mount_uploaders :photos, AvatarUploader
     serialize :photos, JSON # If you use SQLite, add this line.    

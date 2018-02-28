@@ -89,4 +89,7 @@ gem 'rails_12factor'
 
 gem 'foreman'
 
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
+
 
