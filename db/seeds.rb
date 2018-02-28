@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-# ActiveRecord::Base.transaction do
-#     10.times {
-#         User.create(email: Faker::Internet.email, password: 123, name: Faker::HarryPotter.character)
-#     }
-# end
+ActiveRecord::Base.transaction do
+    10.times {
+        User.create(email: Faker::Internet.email, password: 123, name: Faker::HarryPotter.character)
+    }
+end
 
 uids = []
 User.all.each {|u| uids << u.id}
