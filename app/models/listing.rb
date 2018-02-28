@@ -1,14 +1,15 @@
 class Listing < ApplicationRecord
-    include Elasticsearch::Model
+
     belongs_to :user
     has_many :reservations, dependent: :destroy
     validates :title, presence: true
 
+    include Elasticsearch::Model
 
     mount_uploaders :photos, AvatarUploader
     serialize :photos, JSON # If you use SQLite, add this line.    
 
-    scope :search, -> (search) {where('title iLIKE ?', "%#{search}%")} #does the same thing as def self.search
+    # scope :search, -> (search) {where('title iLIKE ?', "%#{search}%")} #does the same thing as def self.search
 
     # :all wasn't working
     

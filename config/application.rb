@@ -22,7 +22,7 @@ module Pairbnb
     # and deployment instructions.
     config.active_job.queue_adapter = :sidekiq
 
-    Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+    # Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
   end
 end
