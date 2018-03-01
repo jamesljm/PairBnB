@@ -1,8 +1,10 @@
 class Listing < ApplicationRecord
-    include Elasticsearch::Model
+
     belongs_to :user
     has_many :reservations, dependent: :destroy
     validates :title, presence: true
+    validates :price, presence: true, allow_nil: false
+
 
 
     mount_uploaders :photos, AvatarUploader

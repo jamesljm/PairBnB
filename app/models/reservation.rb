@@ -29,7 +29,7 @@ class Reservation < ApplicationRecord
     end
 
     def calc_total_price 
-        total_price = calc_date_diff * self.listing_price
+        total_price = calc_date_diff * self.listing.price
     end
     
 
