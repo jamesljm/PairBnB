@@ -10,7 +10,8 @@ class Listing < ApplicationRecord
     mount_uploaders :photos, AvatarUploader
     serialize :photos, JSON # If you use SQLite, add this line.    
 
-    scope :search, -> (search) {where('title iLIKE ?', "%#{search}%")} #does the same thing as def self.search
+    scope :title, -> (title) {where('title iLIKE ?', "%#{title}%")} #does the same thing as def self.search
+    scope :price, -> (min_price, max_price) {where('price >= ? AND price <= ?', min_price, max_price)}
 
     # :all wasn't working
     

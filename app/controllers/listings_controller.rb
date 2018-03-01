@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
     end
 
     def search 
-        @listing = Listing.search(params[:search]).page params[:page]
+        @listing = Listing.title(params[:title]).page params[:page]
         render template:"listings/search"
     end 
 
