@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
 
 
-  get "/search" => "listings#search" 
+  get "/search" => "listings#search"
+  post "/search_title" => "listings#autocomplete_title"
+  post "/search_city" => "listings#autocomplete_city" 
+
   
   resources :listings do
     resources :reservations

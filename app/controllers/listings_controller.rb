@@ -9,6 +9,16 @@ class ListingsController < ApplicationController
         # @photo = photos.all
     end
 
+    def autocomplete_title
+        title_found = Listing.search_title(params["title"])
+        render json: title_found
+    end
+
+    def autocomplete_city
+        city_found = Listing.search_city(params["city"])
+        render json: city_found
+    end
+
     def search
         @listing = Listing.all.page params[:page]
 

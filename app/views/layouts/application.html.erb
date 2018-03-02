@@ -22,10 +22,12 @@
             <div><%= link_to "See Listings", listings_path%></div>
 
             <div>
-                <%= form_tag search_path, :method => 'get' do%>
+                <%= form_tag search_path, :method => 'get', id: "search-bar" do%>
                     <p>
-                        <%= text_field_tag :title, params[:title], placeholder: "Search by title" %>
-                        <%= text_field_tag :city, params[:city], placeholder: "Search by city" %>                        
+                        <%= text_field_tag :title, params[:title], placeholder: "Search by title", list: "title-list", id: "search-title" %>
+                        <datalist id= "title-list"></datalist>
+                        <%= text_field_tag :city, params[:city], placeholder: "Search by city", list: "city-list", id: "search-city" %>      
+                        <datalist id= "city-list"></datalist>
                         <%= range_field_tag :min_price, params[:min_price], min: 0, max: 999 %>
                         <%= range_field_tag :max_price, params[:max_price], min: 1, max: 1000 %>
                         <%= submit_tag "Search" %>
