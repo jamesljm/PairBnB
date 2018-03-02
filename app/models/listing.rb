@@ -11,6 +11,7 @@ class Listing < ApplicationRecord
     serialize :photos, JSON # If you use SQLite, add this line.    
 
     scope :title, -> (title) {where('title iLIKE ?', "%#{title}%")} #does the same thing as def self.search
+    scope :city, -> (city) {where('city iLIKE ?', "%#{city}%")}
     scope :price, -> (min_price, max_price) {where('price >= ? AND price <= ?', min_price, max_price)}
 
     # :all wasn't working

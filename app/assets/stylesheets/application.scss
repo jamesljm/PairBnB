@@ -1,11 +1,60 @@
-@import "bootstrap";
+// @import "bootstrap";
 
 .avatar{
     margin-right: 1vw;
     border-radius: 50% !important;
 }
 
+h1{
+  background-color: lavender
+}
 
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: lightblue;
+  align-items: center;
+
+  div{
+    margin: 0.5vh 1vw 0.5vh 1vw;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // background: dodgerblue;
+
+  }
+
+  .right {
+    background: #ed574a;
+  }
+}
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: fit-content;
+  background-color: white;
+  li{
+    margin: 3px;
+    background-color: lightpink;
+    padding: 0.5vw 2vw 0.5vw 2vw;
+  }
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-4{
+  width: 30vw;
+  border: 1px solid lightgray;
+}
 
 .hosted-field {
     height: 50px;

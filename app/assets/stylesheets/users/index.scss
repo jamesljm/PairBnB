@@ -1,0 +1,12 @@
+$sidebar-font-color: #0ff;
+
+#search-sidebar {
+    position: fixed;
+    right: 0;
+    border: 5px solid black;
+    top: 20vh;
+
+    p {
+        color: $sidebar-font-color;
+    }
+}

@@ -4,11 +4,12 @@
 
 <%# remember to replicate any changes in search.html.erb %>
 
- <%= form_tag search_path, :method => 'get' do%>
+ <!--<%= form_tag search_path, :method => 'get' do%>
     <p>
-        <%= text_field_tag :title, params[:title] %>
-        <%= submit_tag "Search", :title => nil %>
+
     </p>
+    -->
+
 <% end %>
 
     <%= paginate @listing %>

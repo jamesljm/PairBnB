@@ -3,12 +3,12 @@
 <div class="container-fluid">
 
 
- <%= form_tag search_path, :method => 'get' do%>
+ <!-- <%= form_tag search_path, :method => 'get' do%>
     <p>
         <%= text_field_tag :title, params[:title] %>
         <%= submit_tag "Search", :title => nil %>
     </p>
-<% end %>
+<% end %> -->
 
     <%= paginate @listing %>
 

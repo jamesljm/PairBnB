@@ -1,3 +1,7 @@
+<%= provide :stylesheets do %>
+  <%= stylesheet_link_tag 'users/index', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <h1>Home Page</h1>
 
 <h2>Your Profile</h2>
@@ -9,3 +13,12 @@
 <h2>Your latest bookings</h2>
 
 <h2>Your upcoming reservations</h2>
+
+<aside id="search-sidebar">
+     <%= form_tag search_path, :method => 'get' do%>
+        <p>
+            <%= text_field_tag :title %>
+            <%= submit_tag "Search", :title => nil %>
+        </p>
+    <% end %>
+</aside>

@@ -11,23 +11,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     
+    <%= yield :stylesheets %>
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light"> 
-      PAIRBNB
-      <%= link_to "New Listing", new_listing_path %>
-      <%= link_to "See Listings", listings_path%>
+    <nav class="navbar navbar-light bg-light">
+        <div class="left">  
+            <%= link_to "PAIRBNB", root_path %>
+            <div><%= link_to "New Listing", new_listing_path %></div>
+            <div><%= link_to "See Listings", listings_path%></div>
 
-      <div id="header-inline" class="navbar navbar-right">
-        <% if signed_in? -%>
-          <div class="d-inline-block avatar"><%= image_tag current_user.avatar.thumb.url, :class => "avatar" if current_user.avatar? %></div>
-          <div class="d-inline-block"><%= button_to t(".sign_out"), sign_out_path, method: :delete %></div>
-        <% else -%>
-          <%= link_to t(".sign_in"), sign_in_path %>
-        <% end -%>
-      </div>
- 
+            <div>
+                <%= form_tag search_path, :method => 'get' do%>
+                    <p>
+                        <%= text_field_tag :title, params[:title], placeholder: "Search by title" %>
+                        <%= text_field_tag :city, params[:city], placeholder: "Search by city" %>                        
+                        <%= range_field_tag :min_price, params[:min_price], min: 0, max: 999 %>
+                        <%= range_field_tag :max_price, params[:max_price], min: 1, max: 1000 %>
+                        <%= submit_tag "Search" %>
+                    </p>
+
+                <% end %>
+            </div>
+        </div>
+        <div id="header-inline" class="navbar navbar-right">
+            <% if signed_in? -%>
+            <div class="d-inline-block avatar"><%= image_tag current_user.avatar.thumb.url, :class => "avatar" if current_user.avatar? %></div>
+            <div class="d-inline-block"><%= button_to t(".sign_out"), sign_out_path, method: :delete %></div>
+            <% else -%>
+            <%= link_to t(".sign_in"), sign_in_path %>
+            <% end -%>
+        </div>
     </nav>
 
     <!-- <div id="flash">
