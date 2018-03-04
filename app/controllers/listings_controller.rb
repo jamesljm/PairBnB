@@ -9,8 +9,26 @@ class ListingsController < ApplicationController
         # @photo = photos.all
     end
 
-    def search 
-        @listing = Listing.search(params[:search]).page params[:page]
+    def autocomplete_title
+        title_found = Listing.search_title(params["title"])
+        render json: title_found
+    end
+
+    def autocomplete_city
+        city_found = Listing.search_city(params["city"])
+        render json: city_found
+    end
+
+    def search
+        @listing = Listing.all.page params[:page]
+
+        filtering_params(params).each do |key, value|
+            @listing = @listing.public_send(key, value) if value.present?
+        end
+
+        # @listing = Listing.title(params[:title]).page params[:page] 
+        # @listing = Listing.city(params[:city]).page params[:page] 
+        # @listing = Listing.price(params[:min_price], params[:max_price]).page params[:page]
         render template:"listings/search"
     end 
 
@@ -46,6 +64,10 @@ class ListingsController < ApplicationController
     end
 
     private
+
+    def filtering_params(params)
+        params.slice(:title, :city, :price)
+    end
 
     def listing_params
         params.require(:listing).permit(:title, :user_id, :kitchen, :price, {amenities: []}, {photos: []})

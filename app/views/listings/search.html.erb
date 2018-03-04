@@ -3,12 +3,12 @@
 <div class="container-fluid">
 
 
- <%= form_tag search_path, :method => 'get' do%>
+ <!-- <%= form_tag search_path, :method => 'get' do%>
     <p>
-        <%= text_field_tag :search, params[:search] %>
+        <%= text_field_tag :title, params[:title] %>
         <%= submit_tag "Search", :title => nil %>
     </p>
-<% end %>
+<% end %> -->
 
     <%= paginate @listing %>
 
@@ -16,8 +16,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <div><%= "#{l1.title}" %></div>
+                    <div><%= "city: #{l1.city}" %></div>
                     <div><%= "kitchen: #{l1.kitchen}" %></div>
                     <div><%= "amenities: #{l1.amenities}"%></div>
+                    <div><%= "price: #{l1.price}"%></div>
                     <div>
                         <% l1.photos.each do |p| %>
                         <%= image_tag(p.thumb.url) %>
@@ -25,7 +27,7 @@
                     </div>
                     <div><%= l1.user.email %></div>
                     <% if current_user && current_user.id==l1.user_id %>
-                        <div><%= link_to "edit listing", edit_listing_path(l1) %></div>
+                        <div><%= button_to "edit listing", edit_listing_path(l1), method: :get  %></div>
                     <% end %>
 
                     <% if current_user && current_user.customer? %>
@@ -34,7 +36,7 @@
                     <% end %>
 
                     <% unless current_user.nil? %>
-                        <%= link_to "Reserve", new_listing_reservation_path(l1) %>
+                        <%= button_to "Reserve", new_listing_reservation_path(l1), method: :get %>
                     <% end %>
 
                     <div></br></div>
@@ -43,8 +45,10 @@
                 <% if l2 %>                
                     <div class="col-md-4">
                         <div><%= "#{l2.title}" %></div>
+                        <div><%= "city: #{l2.city}" %></div>                        
                         <div><%= "kitchen: #{l2.kitchen}" %></div>
                         <div><%= "amenities: #{l2.amenities}"%></div>
+                        <div><%= "price: #{l2.price}"%></div>
                         <div>
                             <% l2.photos.each do |p| %>
                             <%= image_tag(p.thumb.url) %>
@@ -52,7 +56,7 @@
                         </div>
                         <div><%= l2.user.email %></div>
                         <% if current_user && current_user.id==l2.user_id %>
-                            <div><%= link_to "edit listing", edit_listing_path(l2) %></div>
+                            <div><%= button_to "edit listing", edit_listing_path(l2), method: :get  %></div>
                         <% end %>
 
                         <% if current_user && current_user.customer? %>
@@ -61,7 +65,7 @@
                         <% end %>
 
                         <% unless current_user.nil? %>
-                            <%= link_to "Reserve", new_listing_reservation_path(l2) %>
+                            <%= button_to "Reserve", new_listing_reservation_path(l2), method: :get %>
                         <% end %>
 
                         <div></br></div>
@@ -71,8 +75,10 @@
                 <% if l3 %>
                     <div class="col-md-4">
                         <div><%= "#{l3.title}" %></div>
+                        <div><%= "city: #{l3.city}" %></div>                        
                         <div><%= "kitchen: #{l3.kitchen}" %></div>
                         <div><%= "amenities: #{l3.amenities}"%></div>
+                        <div><%= "price: #{l3.price}"%></div>                        
                         <div>
                             <% l3.photos.each do |p| %>
                             <%= image_tag(p.thumb.url) %>
@@ -80,7 +86,7 @@
                         </div>
                         <div><%= l3.user.email %></div>
                         <% if current_user && current_user.id==l3.user_id %>
-                            <div><%= link_to "edit listing", edit_listing_path(l3) %></div>
+                            <div><%= button_to "edit listing", edit_listing_path(l3), method: :get %></div>
                         <% end %>
 
                         <% if current_user && current_user.customer? %>
@@ -89,7 +95,7 @@
                         <% end %>
 
                         <% unless current_user.nil? %>
-                            <%= link_to "Reserve", new_listing_reservation_path(l3) %>
+                            <%= button_to "Reserve", new_listing_reservation_path(l3), method: :get %>
                         <% end %>
 
                         <div></br></div>
@@ -97,5 +103,5 @@
                 <% end %>
             </div>
         <% end %>
-
+        
 </div>
