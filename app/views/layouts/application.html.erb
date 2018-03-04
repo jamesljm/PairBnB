@@ -28,8 +28,8 @@
                         <datalist id= "title-list"></datalist>
                         <%= text_field_tag :city, params[:city], placeholder: "Search by city", list: "city-list", id: "search-city" %>      
                         <datalist id= "city-list"></datalist>
-                        <%= range_field_tag :min_price, params[:min_price], min: 0, max: 999 %>
-                        <%= range_field_tag :max_price, params[:max_price], min: 1, max: 1000 %>
+                        <%= range_field_tag :min_price, params[:min_price], min: 0, max: 999, class: "range-field" %>
+                        <%= range_field_tag :max_price, params[:max_price], min: 1, max: 1000, class: "range-field" %>
                         <%= submit_tag "Search" %>
                     </p>
 
