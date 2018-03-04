@@ -8,7 +8,7 @@ class Listing < ApplicationRecord
 
 
     mount_uploaders :photos, PhotosUploader
-    skip_callback :commit, :after, :remove_previously_stored_avatar
+    # skip_callback :commit, :after, :remove_previously_stored_avatar
     serialize :photos, JSON # If you use SQLite, add this line.    
 
     scope :title, -> (title) {where('title iLIKE ?', "%#{title}%")} #does the same thing as def self.search
