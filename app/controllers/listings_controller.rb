@@ -70,7 +70,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:title, :user_id, :kitchen, :price, {amenities: []}, {photos: []})
+        params.require(:listing).permit(:title, :user_id, :kitchen, :price, :city, {amenities: []}, {photos: []})
         # remember amenities will be saved in an array.
     end
 

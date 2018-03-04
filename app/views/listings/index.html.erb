@@ -17,6 +17,9 @@
         <% @listing.in_groups_of(3) do |l1,l2,l3|%>
             <div class="row">
                 <div class="col-md-4">
+                    <% if l1.photos.count != 0 %>
+                        <div><%= image_tag(l1.photos.first.url) %></div>
+                    <% end %>
                     <div><%= "#{l1.title}" %></div>
                     <div><%= "city: #{l1.city}" %></div>
                     <div><%= "kitchen: #{l1.kitchen}" %></div>
@@ -24,7 +27,7 @@
                     <div><%= "price: #{l1.price}"%></div>
                     <div>
                         <% l1.photos.each do |p| %>
-                        <%= image_tag(p.thumb.url) %>
+                            <%= image_tag(p.thumb.url) %>
                         <% end %>
                     </div>
                     <div><%= l1.user.email %></div>
@@ -46,6 +49,9 @@
 
                 <% if l2 %>                
                     <div class="col-md-4">
+                        <% if l2.photos.count != 0 %>
+                            <div><%= image_tag(l2.photos.first.url) %></div>
+                        <% end %>
                         <div><%= "#{l2.title}" %></div>
                         <div><%= "city: #{l2.city}" %></div>                        
                         <div><%= "kitchen: #{l2.kitchen}" %></div>
@@ -76,6 +82,9 @@
 
                 <% if l3 %>
                     <div class="col-md-4">
+                        <% if l3.photos.count != 0 %>
+                            <div><%= image_tag(l3.photos.first.url) %></div>
+                        <% end %>                    
                         <div><%= "#{l3.title}" %></div>
                         <div><%= "city: #{l3.city}" %></div>                        
                         <div><%= "kitchen: #{l3.kitchen}" %></div>
