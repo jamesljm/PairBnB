@@ -77,4 +77,73 @@ document.addEventListener("turbolinks:load", function() {
     }
     }
 
+
+    // // for fade in and out
+    // $(document).ready(function() {
+        
+    //     // var listing = $(".listing");
+    //     // var index = 0;
+    //     var visibleIndex = 0;
+
+    //     // function next(listing_photos) {
+    //     //     var i=0;    
+            
+    //     //     while (i<listing_photos.length){                
+            
+    //     //         i++;
+
+    //     //         // fade out the currently visible item
+    //     //         listing_photos.eq(visibleIndex).fadeTo(1000, 0, function () {
+    //     //             // at the same time, fade in the next item
+    //     //             console.log(visibleIndex)
+    //     //             visibleIndex = ++visibleIndex % listing_photos.length;
+    //     //             console.log(visibleIndex)
+    //     //             console.log(listing_photos)
+    //     //             // debugger
+    //     //             listing_photos.eq(visibleIndex).fadeTo(1000, 1, function () {
+    //     //                 // setTimeout(next(listing_photos), 1000);
+    //     //             }); 
+    //     //         });
+    //     //     };            
+    //     // };
+        
+        
+    //     $(".listing").each(function() {
+            
+    //         var listing_photos = $(this).find(".map").find(".map-photos");
+    //         numberOfPhotos = parseInt($(this).find(".map").data("count"));
+    
+    //         // for (i = 0; i < numberOfPhotos; i++){
+    //             listing_photos.css("opacity", 0);
+    //             listing_photos.eq(0).css("opacity", 1);
+
+    //             var i=0;    
+            
+    //             while (i<listing_photos.length){                
+                
+    //                 i++;
+
+    //                 // fade out the currently visible item
+    //                 listing_photos.eq(visibleIndex).fadeTo(1000, 0, function () {
+    //                     // at the same time, fade in the next item
+    //                     console.log(visibleIndex)
+    //                     visibleIndex = ++visibleIndex % listing_photos.length;
+    //                     console.log(visibleIndex)
+    //                     console.log(listing_photos)
+    //                     // debugger
+    //                     listing_photos.eq(visibleIndex).fadeTo(1000, 1, function () {
+    //                         // setTimeout(next(listing_photos), 1000);
+    //                     }); 
+    //                 });
+    //             };
+                
+    //         // };
+    //     });
+        
+    //     // var listing_photos = $(".map");
+    //     // debugger;
+
+
+    // });
+
 });

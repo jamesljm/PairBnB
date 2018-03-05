@@ -16,9 +16,15 @@
 
         <% @listing.in_groups_of(3) do |l1,l2,l3|%>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 listing">
                     <% if l1.photos.count != 0 %>
-                        <div><%= image_tag(l1.photos.first.url) %></div>
+                        <div class="map main-gallery js-flickity", data-flickity-options='{ "cellAlign": "left", "contain": true }', data-listing-id="map<%= l1.id %>", data-count="<%= l1.photos.count %>">
+                            <% l1.photos.each do |p| %>
+                                <div class="map-photos gallery-cell">
+                                    <%= image_tag(p.url) %>
+                                </div>
+                            <% end %>
+                        </div>
                     <% end %>
                     <div><%= "#{l1.title}" %></div>
                     <div><%= "city: #{l1.city}" %></div>
@@ -48,9 +54,15 @@
                 </div>
 
                 <% if l2 %>                
-                    <div class="col-md-4">
+                    <div class="col-md-4 listing">
                         <% if l2.photos.count != 0 %>
-                            <div><%= image_tag(l2.photos.first.url) %></div>
+                            <div class="map main-gallery js-flickity", data-flickity-options='{ "cellAlign": "left", "contain": true }', data-listing-id="map<%= l2.id %>", data-count="<%= l2.photos.count %>">
+                                <% l2.photos.each do |p| %>
+                                    <div class="map-photos gallery-cell">
+                                        <%= image_tag(p.url) %>
+                                    </div>
+                                <% end %>
+                            </div>
                         <% end %>
                         <div><%= "#{l2.title}" %></div>
                         <div><%= "city: #{l2.city}" %></div>                        
@@ -81,9 +93,15 @@
                 <% end %>
 
                 <% if l3 %>
-                    <div class="col-md-4">
+                    <div class="col-md-4 listing">
                         <% if l3.photos.count != 0 %>
-                            <div><%= image_tag(l3.photos.first.url) %></div>
+                            <div class="map main-gallery js-flickity", data-flickity-options='{ "cellAlign": "left", "contain": true }', data-listing-id="map<%= l3.id %>", data-count="<%= l3.photos.count %>">
+                                <% l3.photos.each do |p| %>
+                                    <div class="map-photos gallery-cell">
+                                        <%= image_tag(p.url) %>
+                                    </div>
+                                <% end %>
+                            </div>
                         <% end %>                    
                         <div><%= "#{l3.title}" %></div>
                         <div><%= "city: #{l3.city}" %></div>                        
